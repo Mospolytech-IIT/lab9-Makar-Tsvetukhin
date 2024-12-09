@@ -12,8 +12,7 @@ def add_users():
     ]
     session.add_all(users)
     session.commit()
-    print("Users add")
-
+    return users  
 def add_posts():
     posts = [
         Post(title="First Post", content="First_content", user_id=1),
@@ -22,8 +21,4 @@ def add_posts():
     ]
     session.add_all(posts)
     session.commit()
-    print("Posts add")
-
-if __name__ == "__main__":
-    add_users()
-    add_posts()
+    return posts  

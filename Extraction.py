@@ -6,20 +6,30 @@ session = Session()
 
 def get_all_users():
     users = session.query(User).all()
-    for user in users:
-        print(f"ID: {user.id}, Username: {user.username}, Email: {user.email}")
+    return users 
 
 def get_all_posts_with_users():
     posts = session.query(Post).all()
+    result = []
     for post in posts:
-        print(f"Post ID: {post.id}, Title: {post.title}, Content: {post.content}, User: {post.user.username}")
+        result.append({
+            "post_id": post.id,
+            "title": post.title,
+            "content": post.content,
+            "user": {
+                "username": post.user.username,
+                "email": post.user.email
+            }
+        })
+    return result  
 
 def get_posts_by_user(user_id):
     posts = session.query(Post).filter_by(user_id=user_id).all()
+    result = []
     for post in posts:
-        print(f"Post ID: {post.id}, Title: {post.title}, Content: {post.content}")
-
-if __name__ == "__main__":
-    get_all_users()
-    get_all_posts_with_users()
-    get_posts_by_user(1) 
+        result.append({
+            "post_id": post.id,
+            "title": post.title,
+            "content": post.content
+        })
+    return result  

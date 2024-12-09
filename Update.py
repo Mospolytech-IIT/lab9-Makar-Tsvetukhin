@@ -9,15 +9,13 @@ def update_user_email(user_id, new_email):
     if user:
         user.email = new_email
         session.commit()
-        print(f"Email update {user.username} on {new_email}")
+        return {"message": f"User {user.username} email updated to {new_email}"}
+    return {"error": "User not found"}
 
 def update_post_content(post_id, new_content):
     post = session.query(Post).filter_by(id=post_id).first()
     if post:
         post.content = new_content
         session.commit()
-        print(f"Post content '{post.title}' updated")
-
-if __name__ == "__main__":
-    update_user_email(1, "newMail@mail.ru")
-    update_post_content(1, "Updated content for the first post")
+        return {"message": f"Post content updated for post ID {post_id}"}
+    return {"error": "Post not found"}
