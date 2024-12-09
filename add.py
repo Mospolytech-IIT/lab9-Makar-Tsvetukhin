@@ -12,7 +12,7 @@ def add_users():
     ]
     session.add_all(users)
     session.commit()
-    print("Пользователи добавлены")
+    print("Users add")
 
 def add_posts():
     posts = [
@@ -22,7 +22,7 @@ def add_posts():
     ]
     session.add_all(posts)
     session.commit()
-    print("Посты добавлены")
+    print("Posts add")
 
 if __name__ == "__main__":
     add_users()
