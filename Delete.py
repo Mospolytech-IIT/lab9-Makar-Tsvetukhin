@@ -9,7 +9,7 @@ def delete_post(post_id):
     if post:
         session.delete(post)
         session.commit()
-        return {"message": f"Post ID {post_id} deleted"}
+        return { f"Post ID {post_id} deleted"}
     return {"error": "Post not found"}
 
 def delete_user_and_posts(user_id):
@@ -20,5 +20,5 @@ def delete_user_and_posts(user_id):
             session.delete(post)
         session.delete(user)
         session.commit()
-        return {"message": f"User {user.username} and all posts deleted"}
+        return { f"User {user.username} and all posts deleted"}
     return {"error": "User not found"}
